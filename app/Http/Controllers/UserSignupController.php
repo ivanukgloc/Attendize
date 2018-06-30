@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Attendize\Utils;
-use App\Models\Account;
-use App\Models\User;
+use App\Account;
+use App\User;
 use Hash;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;

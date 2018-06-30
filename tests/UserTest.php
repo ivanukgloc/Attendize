@@ -11,7 +11,7 @@ class UserTest extends TestCase
     {
         $this->actingAs($this->test_user);
 
-        factory(App\Models\Organiser::class)->create(['account_id' => 1]);
+        factory(App\Organiser::class)->create(['account_id' => 1]);
 
         $server = array('HTTP_X-Requested-With' => 'XMLHttpRequest');
 
@@ -31,7 +31,7 @@ class UserTest extends TestCase
             'message' => 'Successfully Saved Details',
         ]);
 
-        $user = App\Models\User::find($this->test_user->id);
+        $user = App\User::find($this->test_user->id);
 
         $this->assertEquals($firstName, $user->first_name);
         $this->assertEquals($lastName, $user->last_name);
@@ -44,7 +44,7 @@ class UserTest extends TestCase
 
         $previousPassword = $this->test_user->password;
 
-        factory(App\Models\Organiser::class)->create(['account_id' => 1]);
+        factory(App\Organiser::class)->create(['account_id' => 1]);
 
         $server = array('HTTP_X-Requested-With' => 'XMLHttpRequest');
 
@@ -67,7 +67,7 @@ class UserTest extends TestCase
             'message' => 'Successfully Saved Details',
         ]);
 
-        $user = App\Models\User::find($this->test_user->id);
+        $user = App\User::find($this->test_user->id);
 
         $this->assertEquals($firstName, $user->first_name);
         $this->assertEquals($lastName, $user->last_name);
@@ -79,7 +79,7 @@ class UserTest extends TestCase
     {
         $this->actingAs($this->test_user);
 
-        factory(App\Models\Organiser::class)->create(['account_id' => 1]);
+        factory(App\Organiser::class)->create(['account_id' => 1]);
 
         $server = array('HTTP_X-Requested-With' => 'XMLHttpRequest');
 
@@ -103,7 +103,7 @@ class UserTest extends TestCase
     {
         $this->actingAs($this->test_user);
 
-        factory(App\Models\Organiser::class)->create(['account_id' => 1]);
+        factory(App\Organiser::class)->create(['account_id' => 1]);
 
         $server = array('HTTP_X-Requested-With' => 'XMLHttpRequest');
 
@@ -126,7 +126,7 @@ class UserTest extends TestCase
     {
         $this->actingAs($this->test_user);
 
-        factory(App\Models\Organiser::class)->create(['account_id' => 1]);
+        factory(App\Organiser::class)->create(['account_id' => 1]);
 
         $server = array('HTTP_X-Requested-With' => 'XMLHttpRequest');
 

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 
 use App\Jobs\SendOrderTickets;
-use App\Models\Attendee;
-use App\Models\Event;
-use App\Models\EventStats;
-use App\Models\Order;
+use App\Attendee;
+use App\Event;
+use App\EventStats;
+use App\Order;
 use DB;
 use Excel;
 use Illuminate\Http\Request;

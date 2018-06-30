@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Events\OrderCompletedEvent;
-use App\Models\Affiliate;
-use App\Models\Attendee;
-use App\Models\Event;
-use App\Models\EventStats;
-use App\Models\Order;
-use App\Models\OrderItem;
-use App\Models\QuestionAnswer;
-use App\Models\ReservedTickets;
-use App\Models\Ticket;
+use App\Affiliate;
+use App\Attendee;
+use App\Event;
+use App\EventStats;
+use App\Order;
+use App\OrderItem;
+use App\QuestionAnswer;
+use App\ReservedTickets;
+use App\Ticket;
 use Carbon\Carbon;
 use Cookie;
 use DB;

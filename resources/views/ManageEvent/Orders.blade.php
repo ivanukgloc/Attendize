@@ -18,7 +18,7 @@
 <i class='ico-cart mr5'></i>
 @lang("Event.event_orders")
 <span class="page_title_sub_title hide">
-    @lang("Event.showing_num_of_orders", [30, \App\Models\Order::scope()->count()])
+    @lang("Event.showing_num_of_orders", [30, \App\Order::scope()->count()])
 </span>
 @stop
 

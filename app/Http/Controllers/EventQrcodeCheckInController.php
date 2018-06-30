@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Models\Attendee;
-use App\Models\Event;
+use App\Attendee;
+use App\Event;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use JavaScript;

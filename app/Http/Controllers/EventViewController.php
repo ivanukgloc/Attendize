@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Attendize\Utils;
-use App\Models\Affiliate;
-use App\Models\Event;
-use App\Models\EventStats;
+use App\Affiliate;
+use App\Event;
+use App\EventStats;
 use Auth;
 use Cookie;
 use Illuminate\Http\Request;

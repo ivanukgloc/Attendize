@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Account;
-use App\Models\Timezone;
-use App\Models\User;
+use App\Account;
+use App\Timezone;
+use App\User;
 use DB;
 use Hash;
 use Illuminate\Console\Command;

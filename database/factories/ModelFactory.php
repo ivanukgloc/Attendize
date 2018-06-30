@@ -14,29 +14,29 @@
 
 use Carbon\Carbon;
 
-$factory->define(App\Models\OrderStatus::class, function (Faker\Generator $faker) {
+$factory->define(App\OrderStatus::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->text,
     ];
 });
 
-$factory->define(App\Models\TicketStatus::class, function (Faker\Generator $faker) {
+$factory->define(App\TicketStatus::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->text,
     ];
 });
 
-$factory->define(App\Models\ReservedTickets::class, function (Faker\Generator $faker) {
+$factory->define(App\ReservedTickets::class, function (Faker\Generator $faker) {
     return [
-        'ticket_id'         => factory(App\Models\Ticket::class)->create()->id,
-        'event_id'          => factory(App\Models\Event::class)->create()->id,
+        'ticket_id'         => factory(App\Ticket::class)->create()->id,
+        'event_id'          => factory(App\Event::class)->create()->id,
         'quantity_reserved' => 50,
         'expires'           => Carbon::now()->addDays(2),
         'session_id'        => $faker->randomNumber
     ];
 });
 
-$factory->define(App\Models\Timezone::class, function (Faker\Generator $faker) {
+$factory->define(App\Timezone::class, function (Faker\Generator $faker) {
     return [
         'name'     => 'America/New_York',
         'location' => 'New York'
@@ -44,7 +44,7 @@ $factory->define(App\Models\Timezone::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(App\Models\DateFormat::class, function (Faker\Generator $faker) {
+$factory->define(App\DateFormat::class, function (Faker\Generator $faker) {
     return [
         'format'        => "Y-m-d",
         'picker_format' => "Y-m-d",
@@ -53,7 +53,7 @@ $factory->define(App\Models\DateFormat::class, function (Faker\Generator $faker)
 });
 
 
-$factory->define(App\Models\DateTimeFormat::class, function (Faker\Generator $faker) {
+$factory->define(App\DateTimeFormat::class, function (Faker\Generator $faker) {
     return [
         'format'        => "Y-m-d H:i:s",
         'picker_format' => "Y-m-d H:i:s",
@@ -61,7 +61,7 @@ $factory->define(App\Models\DateTimeFormat::class, function (Faker\Generator $fa
     ];
 });
 
-$factory->define(App\Models\Currency::class, function (Faker\Generator $faker) {
+$factory->define(App\Currency::class, function (Faker\Generator $faker) {
     return [
         'title'          => "Dollar",
         'symbol_left'    => "$",
@@ -76,15 +76,15 @@ $factory->define(App\Models\Currency::class, function (Faker\Generator $faker) {
 });
 
 //TODO create country class so country_id can be populated
-$factory->define(App\Models\Account::class, function (Faker\Generator $faker) {
+$factory->define(App\Account::class, function (Faker\Generator $faker) {
     return [
         'first_name'             => $faker->firstName,
         'last_name'              => $faker->lastName,
         'email'                  => $faker->email,
-        'timezone_id'            => factory(App\Models\Timezone::class)->create()->id,
-        'date_format_id'         => factory(App\Models\DateFormat::class)->create()->id,
-        'datetime_format_id'     => factory(App\Models\DateTimeFormat::class)->create()->id,
-        'currency_id'            => factory(App\Models\Currency::class)->create()->id,
+        'timezone_id'            => factory(App\Timezone::class)->create()->id,
+        'date_format_id'         => factory(App\DateFormat::class)->create()->id,
+        'datetime_format_id'     => factory(App\DateTimeFormat::class)->create()->id,
+        'currency_id'            => factory(App\Currency::class)->create()->id,
         'name'                   => $faker->name,
         'last_ip'                => "127.0.0.1",
         'last_login_date'        => Carbon::now()->subDays(2),
@@ -93,7 +93,7 @@ $factory->define(App\Models\Account::class, function (Faker\Generator $faker) {
         'city'                   => $faker->city,
         'state'                  => $faker->stateAbbr,
         'postal_code'            => $faker->postcode,
-//        'country_id'             => factory(App\Models\Country::class)->create()->id,
+//        'country_id'             => factory(App\Country::class)->create()->id,
         'email_footer'           => 'Email footer text',
         'is_active'              => false,
         'is_banned'              => false,
@@ -106,9 +106,9 @@ $factory->define(App\Models\Account::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
+$factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'account_id'        => factory(App\Models\Account::class)->create()->id,
+        'account_id'        => factory(App\Account::class)->create()->id,
         'first_name'        => $faker->firstName,
         'last_name'         => $faker->lastName,
         'phone'             => $faker->phoneNumber,
@@ -122,9 +122,9 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\Organiser::class, function (Faker\Generator $faker) {
+$factory->define(App\Organiser::class, function (Faker\Generator $faker) {
     return [
-        'account_id'         => factory(App\Models\Account::class)->create()->id,
+        'account_id'         => factory(App\Account::class)->create()->id,
         'name'               => $faker->name,
         'about'              => $faker->text,
         'email'              => $faker->email,
@@ -137,7 +137,7 @@ $factory->define(App\Models\Organiser::class, function (Faker\Generator $faker) 
     ];
 });
 
-$factory->define(App\Models\Event::class, function (Faker\Generator $faker) {
+$factory->define(App\Event::class, function (Faker\Generator $faker) {
     return [
         'title'                      => $faker->name,
         'location'                   => $faker->text,
@@ -148,14 +148,14 @@ $factory->define(App\Models\Event::class, function (Faker\Generator $faker) {
         'start_date'                 => Carbon::now(),
         'end_date'                   => Carbon::now()->addDay(),
         'on_sale_date'               => Carbon::now()->subDays(20),
-        'account_id'                 => factory(App\Models\Account::class)->create()->id,
-        'user_id'                    => factory(App\Models\User::class)->create()->id,
-        'currency_id'                => factory(App\Models\Currency::class)->create()->id,
+        'account_id'                 => factory(App\Account::class)->create()->id,
+        'user_id'                    => factory(App\User::class)->create()->id,
+        'currency_id'                => factory(App\Currency::class)->create()->id,
         'sales_volume'               => 0,
         'organiser_fees_volume'      => 0,
         'organiser_fee_fixed'        => 0,
         'organiser_fee_percentage'   => 0,
-        'organiser_id'               => factory(App\Models\Organiser::class)->create()->id,
+        'organiser_id'               => factory(App\Organiser::class)->create()->id,
         'venue_name'                 => $faker->name,
         'venue_name_full'            => $faker->name,
         'location_address'           => $faker->address,
@@ -182,10 +182,10 @@ $factory->define(App\Models\Event::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\Order::class, function (Faker\Generator $faker) {
+$factory->define(App\Order::class, function (Faker\Generator $faker) {
     return [
-        'account_id'            => factory(App\Models\Account::class)->create()->id,
-        'order_status_id'       => factory(App\Models\OrderStatus::class)->create()->id,
+        'account_id'            => factory(App\Account::class)->create()->id,
+        'order_status_id'       => factory(App\OrderStatus::class)->create()->id,
         'first_name'            => $faker->firstName,
         'last_name'             => $faker->lastName,
         'email'                 => $faker->email,
@@ -203,18 +203,18 @@ $factory->define(App\Models\Order::class, function (Faker\Generator $faker) {
         'is_refunded'           => 0,
         'amount'                => 20.00,
         'amount_refunded'       => 0,
-        'event_id'              => factory(App\Models\Event::class)->create()->id
+        'event_id'              => factory(App\Event::class)->create()->id
     ];
 });
 
 
-$factory->define(App\Models\Ticket::class, function (Faker\Generator $faker) {
+$factory->define(App\Ticket::class, function (Faker\Generator $faker) {
     return [
-        'user_id'               => factory(App\Models\User::class)->create()->id,
-        'edited_by_user_id'     => factory(App\Models\User::class)->create()->id,
-        'account_id'            => factory(App\Models\Account::class)->create()->id,
-        'order_id'              => factory(App\Models\OrderStatus::class)->create()->id,
-        'event_id'              => factory(App\Models\Event::class)->create()->id,
+        'user_id'               => factory(App\User::class)->create()->id,
+        'edited_by_user_id'     => factory(App\User::class)->create()->id,
+        'account_id'            => factory(App\Account::class)->create()->id,
+        'order_id'              => factory(App\OrderStatus::class)->create()->id,
+        'event_id'              => factory(App\Event::class)->create()->id,
         'title'                 => $faker->name,
         'description'           => $faker->text,
         'price'                 => 50.00,
@@ -230,17 +230,17 @@ $factory->define(App\Models\Ticket::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\OrderItem::class, function (Faker\Generator $faker) {
+$factory->define(App\OrderItem::class, function (Faker\Generator $faker) {
     return [
         'title'            => $faker->title,
         'quantity'         => 5,
         'unit_price'       => 20.00,
         'unit_booking_fee' => 2.00,
-        'order_id'         => factory(App\Models\Order::class)->create()->id
+        'order_id'         => factory(App\Order::class)->create()->id
     ];
 });
 
-$factory->define(App\Models\EventStats::class, function (Faker\Generator $faker) {
+$factory->define(App\EventStats::class, function (Faker\Generator $faker) {
     return [
         'date'                  => Carbon::now(),
         'views'                 => 0,
@@ -248,16 +248,16 @@ $factory->define(App\Models\EventStats::class, function (Faker\Generator $faker)
         'tickets_sold'          => 0,
         'sales_volumne'         => 0,
         'organiser_fees_volume' => 0,
-        'event_id'              => factory(App\Models\Event::class)->create()->id,
+        'event_id'              => factory(App\Event::class)->create()->id,
     ];
 });
 
 
-$factory->define(App\Models\Attendee::class, function (Faker\Generator $faker) {
+$factory->define(App\Attendee::class, function (Faker\Generator $faker) {
     return [
-        'order_id'                 => factory(App\Models\Order::class)->create()->id,
-        'event_id'                 => factory(App\Models\Event::class)->create()->id,
-        'ticket_id'                => factory(App\Models\Ticket::class)->create()->id,
+        'order_id'                 => factory(App\Order::class)->create()->id,
+        'event_id'                 => factory(App\Event::class)->create()->id,
+        'ticket_id'                => factory(App\Ticket::class)->create()->id,
         'first_name'               => $faker->firstName,
         'last_name'                => $faker->lastName,
         'email'                    => $faker->email,
@@ -266,11 +266,11 @@ $factory->define(App\Models\Attendee::class, function (Faker\Generator $faker) {
         'is_cancelled'             => false,
         'has_arrived'              => false,
         'arrival_time'             => Carbon::now(),
-        'account_id'               => factory(App\Models\Account::class)->create()->id,
+        'account_id'               => factory(App\Account::class)->create()->id,
     ];
 });
 
-$factory->define(App\Models\Message::class, function (Faker\Generator $faker) {
+$factory->define(App\Message::class, function (Faker\Generator $faker) {
     return [
         'message'    => $faker->text,
         'subject'    => $faker->text,
@@ -278,12 +278,12 @@ $factory->define(App\Models\Message::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\EventImage::class, function (Faker\Generator $faker) {
+$factory->define(App\EventImage::class, function (Faker\Generator $faker) {
     return [
         'image_path' => $faker->imageUrl(),
-        'event_id'   => factory(App\Models\Event::class)->create()->id,
-        'account_id' => factory(App\Models\Account::class)->create()->id,
-        'user_id'    => factory(App\Models\User::class)->create()->id
+        'event_id'   => factory(App\Event::class)->create()->id,
+        'account_id' => factory(App\Account::class)->create()->id,
+        'user_id'    => factory(App\User::class)->create()->id
     ];
 });
 

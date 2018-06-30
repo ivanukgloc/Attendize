@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
+use App\Event;
 
 class EventViewEmbeddedController extends Controller
 {

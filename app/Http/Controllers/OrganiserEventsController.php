@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Models\Organiser;
+use App\Event;
+use App\Organiser;
 use Illuminate\Http\Request;
 
 class OrganiserEventsController extends MyBaseController

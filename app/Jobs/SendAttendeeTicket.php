@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Mailers\AttendeeMailer;
-use App\Models\Attendee;
+use App\Attendee;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Queue\InteractsWithQueue;

@@ -2,8 +2,8 @@
 
 namespace App\Mailers;
 
-use App\Models\Attendee;
-use App\Models\Message;
+use App\Attendee;
+use App\Message;
 use Carbon\Carbon;
 use Log;
 use Mail;

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Attendize\Utils;
-use App\Models\Organiser;
+use App\Organiser;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;

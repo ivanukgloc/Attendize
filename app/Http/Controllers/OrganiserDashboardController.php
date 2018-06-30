@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Organiser;
+use App\Organiser;
 use Carbon\Carbon;
 
 class OrganiserDashboardController extends MyBaseController

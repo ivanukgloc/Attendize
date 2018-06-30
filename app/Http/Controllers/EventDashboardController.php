@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Models\EventStats;
+use App\Event;
+use App\EventStats;
 use Carbon\Carbon;
 use DateInterval;
 use DatePeriod;

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEventQuestionRequest;
-use App\Models\Attendee;
-use App\Models\Event;
-use App\Models\Question;
-use App\Models\QuestionAnswer;
-use App\Models\QuestionType;
+use App\Attendee;
+use App\Event;
+use App\Question;
+use App\QuestionAnswer;
+use App\QuestionType;
 use Excel;
 use Illuminate\Http\Request;
 use JavaScript;

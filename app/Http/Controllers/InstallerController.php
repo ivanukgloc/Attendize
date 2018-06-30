@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Timezone;
+use App\Timezone;
 use Artisan;
 use Config;
 use DB;

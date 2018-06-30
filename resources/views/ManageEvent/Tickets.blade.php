@@ -180,7 +180,7 @@
                                 </span>
                                             @endif
                                         @else
-                                            {{\App\Models\TicketStatus::find($ticket->sale_status)->name}}
+                                            {{\App\TicketStatus::find($ticket->sale_status)->name}}
                                         @endif
                                     </a>
                                 </li>

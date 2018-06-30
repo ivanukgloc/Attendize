@@ -2,7 +2,7 @@
 
 namespace app\Http\Middleware;
 
-use App\Models\Organiser;
+use App\Organiser;
 use Closure;
 
 class FirstRunMiddleware

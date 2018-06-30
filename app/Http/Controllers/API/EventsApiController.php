@@ -2,7 +2,7 @@
 
 namespace app\Http\Controllers\API;
 
-use App\Models\Event;
+use App\Event;
 use Illuminate\Http\Request;
 
 class EventsApiController extends ApiBaseController

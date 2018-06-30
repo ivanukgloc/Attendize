@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Attendee;
-use App\Models\Event;
+use App\Attendee;
+use App\Event;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;

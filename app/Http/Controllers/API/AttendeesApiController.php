@@ -2,7 +2,7 @@
 
 namespace app\Http\Controllers\API;
 
-use App\Models\Attendee;
+use App\Attendee;
 use Illuminate\Http\Request;
 
 class AttendeesApiController extends ApiBaseController

@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Models\Attendee;
-use App\Models\Order;
+use App\Attendee;
+use App\Order;
 
 class AttendeeRefFix extends Migration
 {

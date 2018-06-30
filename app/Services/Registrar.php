@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\User;
+use App\User;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 use Validator;
 

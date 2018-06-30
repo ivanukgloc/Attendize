@@ -3,7 +3,7 @@
 namespace app\Http\Middleware;
 
 use App\Attendize\Utils;
-use App\Models\Account;
+use App\Account;
 use Closure;
 use Redirect;
 

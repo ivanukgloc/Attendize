@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Models\Organiser;
+use App\Event;
+use App\Organiser;
 use Auth;
 use JavaScript;
 use View;
@@ -22,9 +22,9 @@ class MyBaseController extends Controller
                 'email'        => Auth::user()->email,
                 'is_confirmed' => Auth::user()->is_confirmed,
             ],
-            /*
-             * @todo These should be user selectable
-             */
+            
+             // * @todo These should be user selectable
+             
             'DateFormat'          => 'dd-MM-yyyy',
             'DateTimeFormat'      => 'dd-MM-yyyy hh:mm',
             'GenericErrorMessage' => trans("Controllers.whoops"),

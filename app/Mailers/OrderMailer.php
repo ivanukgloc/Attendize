@@ -2,7 +2,7 @@
 
 namespace App\Mailers;
 
-use App\Models\Order;
+use App\Order;
 use Log;
 use Mail;
 

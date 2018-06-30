@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Organiser;
+use App\Organiser;
 use File;
 use Image;
 use Illuminate\Http\Request;

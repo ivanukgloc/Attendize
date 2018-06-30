@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Order;
+use App\Order;
 use Illuminate\Queue\SerializesModels;
 
 class OrderCompletedEvent extends Event

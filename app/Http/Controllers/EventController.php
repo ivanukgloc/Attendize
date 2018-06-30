@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Models\EventImage;
-use App\Models\Organiser;
+use App\Event;
+use App\EventImage;
+use App\Organiser;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -24,7 +24,7 @@ class EventController extends MyBaseController
     {
         $data = [
             'modal_id'     => $request->get('modal_id'),
-            'organisers'   => Organiser::scope()->lists('name', 'id'),
+            'organisers'   => Organiser::scope()->pluck('name', 'id'),
             'organiser_id' => $request->get('organiser_id') ? $request->get('organiser_id') : false,
         ];
 

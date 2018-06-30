@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
+use App\Event;
 use File;
 use Illuminate\Http\Request;
 use Image;

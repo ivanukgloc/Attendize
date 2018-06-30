@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Account;
-use App\Models\AccountPaymentGateway;
-use App\Models\Currency;
-use App\Models\PaymentGateway;
-use App\Models\Timezone;
-use App\Models\User;
+use App\Account;
+use App\AccountPaymentGateway;
+use App\Currency;
+use App\PaymentGateway;
+use App\Timezone;
+use App\User;
 use Auth;
 use Hash;
 use HttpClient;

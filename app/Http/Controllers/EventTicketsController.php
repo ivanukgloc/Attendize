@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Models\Ticket;
+use App\Event;
+use App\Ticket;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Log;

@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Timezone;
-use App\Models\User;
+use App\Timezone;
+use App\User;
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
@@ -74,7 +74,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
          * Set up our test user
          */
         if(User::where('email','=','test@test.test')->count() === 0) {
-            $this->test_user = factory(App\Models\User::class)->create([
+            $this->test_user = factory(App\User::class)->create([
                 'email'    => $this->test_user_email,
                 'password' => Hash::make($this->test_user_password),
             ]);
