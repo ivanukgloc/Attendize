@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Organiser;
 use App\User;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use Auth;
+// use Illuminate\Support\Facades\Auth;
+// use App\Http\Controllers\Controller;
 use JavaScript;
 use View;
 
