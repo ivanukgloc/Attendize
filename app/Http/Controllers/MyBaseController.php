@@ -17,7 +17,7 @@ class MyBaseController extends Controller
          * Set up JS across all views
          */
         JavaScript::put([
-            'User'                => [
+            'User' => [
                 'full_name'    => Auth::user()->full_name,
                 'email'        => Auth::user()->email,
                 'is_confirmed' => Auth::user()->is_confirmed,
