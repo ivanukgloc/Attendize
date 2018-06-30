@@ -6,7 +6,7 @@ use Auth;
 use Validator;
 
 /*
- * Adapted from: https://github.com/hillelcoren/invoice-ninja/blob/master/app/models/EntityModel.php
+ * Adapted from: https://github.com/hillelcoren/invoice-ninja/blob/master/app/EntityModel.php
  */
 
 class MyBaseModel extends \Illuminate\Database\Eloquent\Model
