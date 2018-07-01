@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
             'Illuminate\Contracts\Auth\Registrar', 'App\Services\Registrar'
         );
         if ($this->app->environment() !== 'production') { // or local or whatever
-            $this->app->register(\Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider::class);
+            // $this->app->register(\Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider::class);
         }
     }
 }
