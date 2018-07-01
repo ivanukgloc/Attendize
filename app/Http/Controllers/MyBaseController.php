@@ -7,7 +7,7 @@ use App\Organiser;
 use App\User;
 use Auth;
 // use Illuminate\Support\Facades\Auth;
-// use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use JavaScript;
 use View;
 
@@ -16,24 +16,26 @@ class MyBaseController extends Controller
 {
     public function __construct()
     {
-        /*
-         * Set up JS across all views
-         */
-        JavaScript::put([
-            'User' => [
-                'full_name'    => Auth::user()->full_name,
-                'email'        => Auth::user()->email,
-                'is_confirmed' => Auth::user()->is_confirmed,
-            ],
-            'DateFormat'          => 'dd-MM-yyyy',
-            'DateTimeFormat'      => 'dd-MM-yyyy hh:mm',
-            'GenericErrorMessage' => trans("Controllers.whoops"),
-        ]);
+        if(Auth::user()) {
+            /*
+            * Set up JS across all views
+            */
+            JavaScript::put([
+                'User' => [
+                    'full_name'    => Auth::user()->full_name,
+                    'email'        => Auth::user()->email,
+                    'is_confirmed' => Auth::user()->is_confirmed,
+                ],
+                'DateFormat'          => 'dd-MM-yyyy',
+                'DateTimeFormat'      => 'dd-MM-yyyy hh:mm',
+                'GenericErrorMessage' => trans("Controllers.whoops"),
+            ]);
 
-        /*
-         * Share the organizers across all views
-         */
-        View::share('organisers', Organiser::scope()->get());
+            /*
+            * Share the organizers across all views
+            */
+            View::share('organisers', Organiser::scope()->get());
+        }
     }
 
     /**

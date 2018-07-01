@@ -58,7 +58,7 @@ return [
             'prefix'   => '',
         ],
 
-        'mysql' => [
+        'system' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST'),
             'port'	=> env('DB_PORT'),
