@@ -34,6 +34,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $hidden = ['password'];
 
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *

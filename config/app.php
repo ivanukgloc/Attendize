@@ -14,6 +14,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+
     'name' => 'Attendize',
 
     /*
@@ -41,6 +42,8 @@ return [
     */
 
     'url' => env('APP_URL'),
+
+    'url_base' => env('APP_URL_BASE', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
