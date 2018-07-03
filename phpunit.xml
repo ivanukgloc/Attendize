@@ -19,7 +19,8 @@
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="MAIL_DRIVER" value="log"/>
-        <env name="DB_HOST" value="176.58.123.120"/>
-        <env name="DB_DATABASE" value="test"/>
+        <env name="DB_HOST" value="127.0.0.1"/>
+        <env name="DB_DATABASE" value="attendizedb_test"/>
+        <env name="TENANCY_AUTO_HOSTNAME_IDENTIFICATION" value="false"/>
     </php>
 </phpunit>
