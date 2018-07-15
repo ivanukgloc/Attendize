@@ -116,7 +116,7 @@
 
             <div class="bottom_info">
                 {{--Attendize is provided free of charge on the condition the below hyperlink is left in place.--}}
-                {{--See https://www.attendize.com/licence.php for more information.--}}
+                {{--See http://app.heartlandticket.com/licence.php for more information.--}}
                 @include('Shared.Partials.PoweredBy')
             </div>
         </div>

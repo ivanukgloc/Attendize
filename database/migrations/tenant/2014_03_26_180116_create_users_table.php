@@ -108,11 +108,11 @@ class CreateUsersTable extends Migration
             $t->string('stripe_publishable_key', 55)->nullable();
             $t->text('stripe_data_raw', 55)->nullable();
 
-            $t->foreign('timezone_id')->references('id')->on('timezones');
-            $t->foreign('date_format_id')->references('id')->on('date_formats');
-            $t->foreign('datetime_format_id')->references('id')->on('date_formats');
+            // $t->foreign('timezone_id')->references('id')->on('timezones');
+            // $t->foreign('date_format_id')->references('id')->on('date_formats');
+            // $t->foreign('datetime_format_id')->references('id')->on('date_formats');
             //$t->foreign('payment_gateway_id')->references('id')->on('payment_gateways');
-            $t->foreign('currency_id')->references('id')->on('currencies');
+            // $t->foreign('currency_id')->references('id')->on('currencies');
         });
 
         /*
@@ -136,7 +136,7 @@ class CreateUsersTable extends Migration
             $t->boolean('is_parent')->default(false);
             $t->string('remember_token', 100)->nullable();
 
-            $t->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
+            // $t->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
         });
 
         Schema::create('organisers', function ($table) {

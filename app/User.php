@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Attendize\Utils;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -49,12 +50,22 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         'phone',
         'email',
         'password',
+        'is_admin',
+        'logo_number',
         'confirmation_code',
         'is_registered',
         'is_confirmed',
         'is_parent',
         'remember_token'
     ];
+
+    /**
+     * @return boolean
+     */
+    public function isAdmin()
+    {
+        return (int) $this->is_admin === 1;
+    }
 
     /**
      * The account associated with the user.
@@ -137,6 +148,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * @return string
+     */
+    public function getLogoPath()
+    {
+        return Utils::logoPath($this->logo_number);
+    }
+
+    /**
      * Get the full name of the user.
      *
      * @return string
@@ -144,6 +163,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRecordTitle()
+    {
+        return $this->name;
     }
 
     /**
@@ -155,7 +182,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
         static::creating(function ($user) {
             $user->confirmation_code = str_random();
-            $user->api_token = str_random(60);
+            // $user->api_token = str_random(60);
         });
     }
 }

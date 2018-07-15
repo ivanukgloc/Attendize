@@ -64,8 +64,8 @@ class Tenant
     private static function makeAdmin($name, $email, $password): User
     {
         $admin = User::create(['name' => $name, 'email' => $email, 'password' => Hash::make($password)]);
-        $admin->guard_name = 'web';
-        $admin->assignRole('admin');
+        // $admin->guard_name = 'web';
+        // $admin->assignRole('admin');
         return $admin;
     }
 

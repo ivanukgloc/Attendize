@@ -22,6 +22,16 @@
                     <span class="text">@lang("Organiser.customize")</span>
                 </a>
             </li>
+
+            @if (Auth::user()->is_admin == 1)
+                <li class="admin-menu">Admin</li>
+                <li class="{{ \App\Attendize\Utils::checkRoute(['admin::users.index', 'admin::users.create']) ? 'active': '' }}">
+                    <a href="{{ route('admin::users.index')}}">
+                    <span class="figure"><i class="ico-user"></i></span>
+                        <span class="text">@lang("Organiser.users")</span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </section>
 </aside>

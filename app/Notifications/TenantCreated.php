@@ -25,7 +25,7 @@ class TenantCreated extends Notification
     public function toMail($notifiable)
     {
         $token = Password::broker()->createToken($notifiable);
-        $resetUrl = "https://{$this->hostname->fqdn}/password/reset/{$token}";
+        $resetUrl = "http://{$this->hostname->fqdn}/login/reset-password/{$token}";
         $app = config('app.name');
         return (new MailMessage())
             ->subject("{$app} Invitation")

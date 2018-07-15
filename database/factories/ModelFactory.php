@@ -114,12 +114,19 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'phone'             => $faker->phoneNumber,
         'email'             => $faker->email,
         'password'          => $faker->password,
+        'is_admin'          => 0,
         'confirmation_code' => $faker->randomNumber,
         'is_registered'     => false,
         'is_confirmed'      => false,
         'is_parent'         => false,
         'remember_token'    => $faker->randomNumber
     ];
+});
+
+$factory->defineAs(App\User::class, 'admin', function ($faker) use ($factory) {
+    $user = $factory->raw(App\User::class);
+
+    return array_merge($user, ['is_admin' => 1]);
 });
 
 $factory->define(App\Organiser::class, function (Faker\Generator $faker) {
