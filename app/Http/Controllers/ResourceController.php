@@ -4,9 +4,6 @@ namespace App\Traits\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tenant;
-use App\User;
-use App\Account;
-use App\Notifications\TenantCreated;
 use Illuminate\Support\Facades\Hash;
 use Hyn\Tenancy\Contracts\Repositories\CustomerRepository;
 use Hyn\Tenancy\Contracts\Repositories\HostnameRepository;
@@ -15,6 +12,7 @@ use Hyn\Tenancy\Environment;
 use Hyn\Tenancy\Models\Customer;
 use Hyn\Tenancy\Models\Hostname;
 use Hyn\Tenancy\Models\Website;
+use Artisan;
 
 trait ResourceController
 {
@@ -87,59 +85,13 @@ trait ResourceController
         $request->merge($valuesToSave);
         $this->resourceValidate($request, 'store');
 
-        if (Customer::where('name', $valuesToSave['first_name'])->orWhere('email', $valuesToSave['email'])->exists()) {
-            flash()->info("A tenant with name '{$valuesToSave['first_name']}' and/or '{$valuesToSave['email']}' already exists.");
-            return;
-        }
-
-        $customer = new Customer;
-        $customer->name = $valuesToSave['first_name'];
-        $customer->email = $valuesToSave['email'];
-        app(CustomerRepository::class)->create($customer);
-
-        // associate the customer with a website
-        $website = new Website;
-        $website->customer()->associate($customer);
-        app(WebsiteRepository::class)->create($website);
-
-        // associate the website with a hostname
-        $hostname = new Hostname;
-        $baseUrl = config('app.url_base');
-        $hostname->fqdn = "{$valuesToSave['first_name']}.{$baseUrl}";
-        $hostname->customer()->associate($customer);
-        app(HostnameRepository::class)->attach($hostname, $website);
-
-        // make hostname current
-        app(Environment::class)->hostname($hostname);
+        Artisan::call('tenant:create', [
+            'business_name' => $valuesToSave['business_name'],
+            'first_name' => $valuesToSave['first_name'],
+            'last_name' => $valuesToSave['last_name'],
+            'email' => $valuesToSave['email']
+        ]);
         
-        $account = new Account();
-        $account->first_name = $valuesToSave['first_name'];
-        $account->last_name = $valuesToSave['last_name'];
-        $account->email = $valuesToSave['email'];
-        $account->currency_id = $valuesToSave['currency_id'];
-        $account->timezone_id = $valuesToSave['timezone_id'];
-        $account->save();
-
-        $admin = new User();
-        $admin->first_name = $valuesToSave['first_name'];
-        $admin->last_name = $valuesToSave['last_name'];
-        $admin->logo_number = $valuesToSave['logo_number'];
-        $admin->email = $valuesToSave['email'];
-        $admin->password = Hash::make(str_random());
-        $admin->account_id = $account->id;
-        $admin->is_parent = 1;
-        $admin->is_registered = 1;
-        $admin->save();
-
-        $tenant = new Tenant($customer, $website, $hostname, $admin);
-
-        // $tenant = Tenant::createFrom($valuesToSave['name'], $valuesToSave['email']);
-        // flash()->info("Tenant '{$valuesToSave['name']}' is created and is now accessible at {$tenant->hostname->fqdn}");
-
-        // invite admin
-        $tenant->admin->notify(new TenantCreated($tenant->hostname));
-        flash()->info("Admin {$valuesToSave['email']} has been invited!");
-
         return redirect(route('admin::users.index'));
     }
 

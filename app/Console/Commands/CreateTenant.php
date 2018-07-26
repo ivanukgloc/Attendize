@@ -14,7 +14,7 @@ class CreateTenant extends Command
      *
      * @var string
      */
-    protected $signature = 'tenant:create {name} {email}';
+    protected $signature = 'tenant:create {business_name} {first_name} {last_name} {email}';
 
     /**
      * The console command description.
@@ -41,16 +41,18 @@ class CreateTenant extends Command
 
     public function handle()
     {
-        $name = $this->argument('name');
+        $business_name = $this->argument('business_name');
+        $first_name = $this->argument('first_name');
+        $last_name = $this->argument('last_name');
         $email = $this->argument('email');
 
-        if ($this->tenantExists($name, $email)) {
-            $this->error("A tenant with name '{$name}' and/or '{$email}' already exists.");
+        if ($this->tenantExists($business_name, $email)) {
+            $this->error("A tenant with name '{$business_name}' and/or '{$email}' already exists.");
             return;
         }
 
-        $tenant = Tenant::createFrom($name, $email);
-        $this->info("Tenant '{$name}' is created and is now accessible at {$tenant->hostname->fqdn}");
+        $tenant = Tenant::createFrom($business_name, $first_name, $last_name, $email);
+        $this->info("Tenant '{$business_name}' is created and is now accessible at {$tenant->hostname->fqdn}");
 
         // invite admin
         $tenant->admin->notify(new TenantCreated($tenant->hostname));

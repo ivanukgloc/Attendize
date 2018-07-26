@@ -130,13 +130,16 @@ class CreateUsersTable extends Migration
             $t->string('phone')->nullable();
             $t->string('email');
             $t->string('password');
+            $t->string('temp_password');
             $t->string('confirmation_code');
             $t->boolean('is_registered')->default(false);
             $t->boolean('is_confirmed')->default(false);
             $t->boolean('is_parent')->default(false);
             $t->string('remember_token', 100)->nullable();
 
-            // $t->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
+            $t->string('api_token', 60)->nullable();
+
+            $t->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
         });
 
         Schema::create('organisers', function ($table) {

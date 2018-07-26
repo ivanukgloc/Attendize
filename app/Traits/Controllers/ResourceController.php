@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Traits\Controllers;
+use Artisan;
 
 use Illuminate\Http\Request;
 
@@ -75,15 +76,14 @@ trait ResourceController
         $request->merge($valuesToSave);
         $this->resourceValidate($request, 'store');
 
-        if ($record = $this->getResourceModel()::create($this->alterValuesToSave($request, $valuesToSave))) {
-            flash()->success('Element successfully inserted.');
-
-            return $this->getRedirectAfterSave($record);
-        } else {
-            flash()->info('Element was not inserted.');
-        }
-
-        return redirect(route($this->getResourceRoutesAlias().'.index'));
+        Artisan::call('tenant:create', [
+            'business_name' => $valuesToSave['business_name'],
+            'first_name' => $valuesToSave['first_name'],
+            'last_name' => $valuesToSave['last_name'],
+            'email' => $valuesToSave['email']
+        ]);
+        
+        return redirect(route('admin::users.index'));
     }
 
     /**

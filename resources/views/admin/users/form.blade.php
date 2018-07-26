@@ -1,5 +1,20 @@
 <div class="col-md-7">
     <div class="col-md-12">
+        <div class="form-group margin-b-5 margin-t-5{{ $errors->has('business_name') ? ' has-error' : '' }}">
+            <label for="name">Business Name *</label>
+            <input type="text" class="form-control" name="business_name" placeholder="Business Name" value="{{ old('business_name', $record->business_name) }}" required>
+
+            @if ($errors->has('business_name'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('business_name') }}</strong>
+                </span>
+            @endif
+        </div>
+        <!-- /.form-group -->
+    </div>
+    <!-- /.col-md-12 -->
+
+    <div class="col-md-12">
         <div class="form-group margin-b-5 margin-t-5{{ $errors->has('first_name') ? ' has-error' : '' }}">
             <label for="name">First Name *</label>
             <input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ old('first_name', $record->first_name) }}" required>

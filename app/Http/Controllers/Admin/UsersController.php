@@ -89,6 +89,7 @@ class UsersController extends Controller
         $values['currency_id'] = config('attendize.default_currency');
         $values['timezone_id'] = config('attendize.default_timezone');
 
+        $values['business_name'] = $request->input('business_name', '');
         $values['first_name'] = $request->input('first_name', '');
         $values['last_name'] = $request->input('last_name', '');
         $values['email'] = $request->input('email', '');

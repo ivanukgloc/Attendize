@@ -135,7 +135,7 @@ return [
          * Abort application execution in case no hostname was identified. This will throw a
          * 404 not found in case the tenant hostname was not resolved.
          */
-        'abort-without-identified-hostname' => false,
+        'abort-without-identified-hostname' => true,
 
         /**
          * Time to cache hostnames in minutes. Set to false to disable.

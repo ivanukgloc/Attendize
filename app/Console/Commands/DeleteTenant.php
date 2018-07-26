@@ -41,10 +41,10 @@ class DeleteTenant extends Command
     {
         // because this is a destructive command, we'll only allow to run this command
         // if the environment is local or testing
-        if (!(app()->isLocal() || app()->runningUnitTests())) {
-            $this->error('This command is only avilable on the local environment.');
-            return;
-        }
+        // if (!(app()->isLocal() || app()->runningUnitTests())) {
+        //     $this->error('This command is only avilable on the local environment.');
+        //     return;
+        // }
 
         $name = $this->argument('name');
         if ($tenant = Tenant::retrieveBy($name)) {

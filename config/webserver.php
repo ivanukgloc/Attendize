@@ -24,7 +24,7 @@ return [
         /**
          * Whether the integration with Apache2 is currently active.
          */
-        'enabled' => false,
+        'enabled' => true,
 
         /**
          * Define the ports of your Apache service.
@@ -82,11 +82,11 @@ return [
                 /**
                  * Action to run to test the apache configuration.
                  */
-                'test-config' => 'apache2ctl -t',
+                'test-config' => 'sudo /usr/sbin/apache2ctl -t',
                 /**
                  * Action to run to reload the apache service.
                  */
-                'reload' => 'apache2ctl graceful'
+                'reload' => 'sudo /usr/sbin/apache2ctl -k graceful'
             ]
         ]
     ],

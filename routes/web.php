@@ -106,6 +106,10 @@ Route::group(
         ]);
     });
 
+    Route::group(['middleware' => ['tenancy.enforce']], function () {
+        Auth::routes();
+    });
+
     /*
      * Public organiser page routes
      */
@@ -766,10 +770,6 @@ Route::group(
         });
     });
 
-    Route::group(['middleware' => 'tenancy.enforce'], function () {
-        Auth::routes();
-    });
-
     Route::get('/', function () {
         return Redirect::route('showSelectOrganiser');
         // I prefer it that way:
@@ -785,7 +785,6 @@ Route::group(
 
 });
 
-
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
