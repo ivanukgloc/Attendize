@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Http\UploadedFile;
 use Str;
 use Image;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
 class Organiser extends MyBaseModel
 {
+    use TenantAwareConnection;
     /**
      * The validation rules for the model.
      *

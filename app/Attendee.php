@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
 /*
   Attendize.com   - Event Management & Ticketing
@@ -15,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Attendee extends MyBaseModel
 {
-    use SoftDeletes;
+    use SoftDeletes, TenantAwareConnection;
 
     /**
      * The attributes that are mass assignable.

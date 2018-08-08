@@ -2,7 +2,8 @@
 
 namespace App;
 
-use App\TenantUser;
+use App\User;
+use Artisan;
 use App\Account;
 use Hyn\Tenancy\Environment;
 use Hyn\Tenancy\Models\Customer;
@@ -16,12 +17,12 @@ use Hyn\Tenancy\Contracts\Repositories\WebsiteRepository;
  * @property Customer customer
  * @property Website website
  * @property Hostname hostname
- * @property TenantUser admin
+ * @property User admin
  */
 
 class Tenant
 {
-    public function __construct(Customer $customer, Website $website = null, Hostname $hostname = null, TenantUser $admin = null)
+    public function __construct(Customer $customer, Website $website = null, Hostname $hostname = null, User $admin = null)
     {
         $this->customer = $customer;
         $this->website = $website ?? $customer->websites->first();
@@ -59,6 +60,8 @@ class Tenant
         // make hostname current
         app(Environment::class)->hostname($hostname);
 
+        Artisan::call('db:seed', ['--force' => true]);
+
         $account = Account::create([
             'first_name' => $first_name,
             'last_name' => $last_name,
@@ -71,16 +74,15 @@ class Tenant
         return new Tenant($customer, $website, $hostname, $admin);
     }
 
-    private static function makeAdmin($first_name, $last_name, $email, $account_id, $password): TenantUser
+    private static function makeAdmin($first_name, $last_name, $email, $account_id, $password): User
     {
-        $admin = TenantUser::create(['first_name' => $first_name,
-                                     'last_name' => $last_name,
-                                     'email' => $email, 
-                                     'password' => Hash::make($password),
-                                     'temp_password' => $password,
-                                     'account_id' => $account_id,
-                                     'is_parent' => 1,
-                                     'is_registered' => 1]);
+        $admin = User::create(['first_name' => $first_name,
+                               'last_name' => $last_name,
+                               'email' => $email, 
+                               'password' => Hash::make($password),
+                               'account_id' => $account_id,
+                               'is_parent' => 1,
+                               'is_registered' => 1]);
         $admin->guard_name = 'web';
         // $admin->assignRole('admin');
         return $admin;

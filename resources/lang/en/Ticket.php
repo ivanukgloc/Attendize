@@ -14,7 +14,7 @@ return array (
   'demo_name' => 'Bill Blogs',
   'demo_order_ref' => '#YLY9U73',
   'demo_organiser' => 'Demo Organiser',
-  'demo_price' => '€XX.XX',
+  'demo_price' => '$XX.XX',
   'demo_start_date_time' => 'Mar 18th 4:08PM',
   'demo_ticket_type' => 'General Admission',
   'demo_venue' => 'Demo Location',

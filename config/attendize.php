@@ -55,8 +55,8 @@ return [
     'question_radio_single'         => 6,
 
 
-    'default_timezone'           => 30, #Europe/Dublin
-    'default_currency'           => 2, #Euro
+    'default_timezone'           => 15, #US/Eastern
+    'default_currency'           => 1, #USD
     'default_date_format'        => 'Y-m-d',
     'default_date_picker_format' => 'Y-m-d',
     'default_datetime_format'    => 'Y-m-d, H:i',

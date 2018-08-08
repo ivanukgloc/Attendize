@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
 class Ticket extends MyBaseModel
 {
-    use SoftDeletes;
+    use SoftDeletes, TenantAwareConnection;
 
     /**
      * The rules to validate the model.

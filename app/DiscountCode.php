@@ -3,7 +3,7 @@
 namespace App;
 
     /*
-      Attendize.com   - Event Management & Ticketing
+      Eventcheckout.com   - Event Management & Ticketing
      */
 
 /**

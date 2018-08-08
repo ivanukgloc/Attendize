@@ -1,9 +1,11 @@
 <?php
 
 namespace App;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
 class QuestionOption extends MyBaseModel
 {
+    use TenantAwareConnection;
     /**
      * Indicates if the model should be timestamped.
      *

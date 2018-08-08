@@ -1,5 +1,10 @@
 <!-- sidebar menu: : style can be found in sidebar.less -->
 <ul class="sidebar-menu" data-widget="tree">
+    <li>
+        <a href="{{ route('showSelectOrganiser') }}">
+            <i class="fa fa-arrow-left"></i> <span>Back</span>
+        </a>
+    </li>
     <li class="header">MAIN NAVIGATION</li>
     <li>
         <a href="{{ route('admin::index') }}">

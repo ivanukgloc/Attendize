@@ -33,7 +33,6 @@ class ManageAccountController extends MyBaseController
             'currencies'               => Currency::pluck('title', 'id'),
             'payment_gateways'         => PaymentGateway::pluck('provider_name', 'id'),
             'account_payment_gateways' => AccountPaymentGateway::scope()->get(),
-            'version_info'             => $this->getVersionInfo(),
         ];
 
         return view('ManageAccount.Modals.EditAccount', $data);
@@ -212,31 +211,5 @@ class ManageAccountController extends MyBaseController
             'status'  => 'success',
             'message' => trans("Controllers.success_name_has_received_instruction", ["name"=>$user->email]),
         ]);
-    }
-
-    public function getVersionInfo()
-    {
-        $installedVersion = null;
-        $latestVersion = null;
-
-        try {
-            $http_client = new Client();
-
-            $response = $http_client->get('https://attendize.com/version.php');
-            $latestVersion = (string)$response->getBody();
-            $installedVersion = file_get_contents(base_path('VERSION'));
-        } catch (\Exception $exception) {
-            return false;
-        }
-
-        if ($installedVersion && $latestVersion) {
-            return [
-                'latest'      => $latestVersion,
-                'installed'   => $installedVersion,
-                'is_outdated' => (version_compare($installedVersion, $latestVersion) === -1) ? true : false,
-            ];
-        }
-
-        return false;
     }
 }

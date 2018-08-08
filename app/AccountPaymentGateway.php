@@ -3,12 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
 
 class AccountPaymentGateway extends MyBaseModel
 {
 
-    use softDeletes;
+    use softDeletes, TenantAwareConnection;
 
     /**
      * The attributes that are mass assignable.

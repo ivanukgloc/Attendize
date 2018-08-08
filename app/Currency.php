@@ -1,9 +1,10 @@
 <?php
 
 namespace App;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
     /*
-      Attendize.com   - Event Management & Ticketing
+      Eventcheckout.com   - Event Management & Ticketing
      */
 
 /**
@@ -13,6 +14,7 @@ namespace App;
  */
 class Currency extends \Illuminate\Database\Eloquent\Model
 {
+    use TenantAwareConnection;
     /**
      * Indicates whether the model should be timestamped.
      *

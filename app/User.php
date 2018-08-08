@@ -10,11 +10,11 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-use Hyn\Tenancy\Traits\UsesSystemConnection;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
-    use Authenticatable, CanResetPassword, SoftDeletes, Notifiable, UsesSystemConnection;
+    use Authenticatable, CanResetPassword, SoftDeletes, Notifiable, TenantAwareConnection;
 
     /**
      * The database table used by the model.

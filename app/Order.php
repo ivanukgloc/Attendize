@@ -5,10 +5,11 @@ namespace App;
 use File;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PDF;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
 class Order extends MyBaseModel
 {
-    use SoftDeletes;
+    use SoftDeletes, TenantAwareConnection;
 
     /**
      * The validation rules of the model.

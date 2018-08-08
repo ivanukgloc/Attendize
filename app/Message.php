@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
     /*
       Attendize.com   - Event Management & Ticketing
@@ -13,6 +14,7 @@ namespace App;
  */
 class Message extends MyBaseModel
 {
+    use TenantAwareConnection;
     /**
      * The attributes that are mass assignable.
      *

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
 /**
  * Description of Questions.
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Question extends MyBaseModel
 {
-    use SoftDeletes;
+    use SoftDeletes, TenantAwareConnection;
 
     /**
      * The events associated with the question.

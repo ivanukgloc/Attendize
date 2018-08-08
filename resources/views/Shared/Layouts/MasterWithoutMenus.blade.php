@@ -9,10 +9,6 @@
 
         @yield('head')
 
-        <!--JS-->
-       {!! HTML::script('vendor/jquery/dist/jquery.min.js') !!}
-        <!--/JS-->
-
         <!--Style-->
        {!!HTML::style('assets/stylesheet/application.css')!!}
         <!--/Style-->
@@ -64,6 +60,10 @@
                 color: #ccc;
             }
         </style>
+
+        <!--JS-->
+       {!! HTML::script('vendor/jquery/dist/jquery.min.js') !!}
+        <!--/JS-->
     </head>
     <body>
         <section id="main" role="main">

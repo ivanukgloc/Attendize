@@ -5,7 +5,8 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini">{!! config('adminlte.logo_mini') !!}</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg">{!! config('adminlte.logo_lg') !!}</span>
+        <!-- <span class="logo-lg">{!! config('adminlte.logo_lg') !!}</span> -->
+        <img style="width: 150px;" class="logo" alt="Attendize" src="{{asset('assets/images/logo-light.png')}}"/>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

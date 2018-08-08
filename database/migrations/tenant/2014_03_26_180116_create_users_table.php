@@ -108,11 +108,11 @@ class CreateUsersTable extends Migration
             $t->string('stripe_publishable_key', 55)->nullable();
             $t->text('stripe_data_raw', 55)->nullable();
 
-            // $t->foreign('timezone_id')->references('id')->on('timezones');
-            // $t->foreign('date_format_id')->references('id')->on('date_formats');
-            // $t->foreign('datetime_format_id')->references('id')->on('date_formats');
-            //$t->foreign('payment_gateway_id')->references('id')->on('payment_gateways');
-            // $t->foreign('currency_id')->references('id')->on('currencies');
+            $t->foreign('timezone_id')->references('id')->on('timezones');
+            $t->foreign('date_format_id')->references('id')->on('date_formats');
+            $t->foreign('datetime_format_id')->references('id')->on('date_formats');
+            // $t->foreign('payment_gateway_id')->references('id')->on('payment_gateways');
+            $t->foreign('currency_id')->references('id')->on('currencies');
         });
 
         /*
@@ -130,7 +130,6 @@ class CreateUsersTable extends Migration
             $t->string('phone')->nullable();
             $t->string('email');
             $t->string('password');
-            $t->string('temp_password');
             $t->string('confirmation_code');
             $t->boolean('is_registered')->default(false);
             $t->boolean('is_confirmed')->default(false);

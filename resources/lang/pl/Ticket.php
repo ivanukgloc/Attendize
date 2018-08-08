@@ -14,7 +14,7 @@ return array (
   'demo_name' => 'Jan Kowalski',
   'demo_order_ref' => '#YLY9U73',
   'demo_organiser' => 'Organizator Demonstracyjny',
-  'demo_price' => '€XX.XX',
+  'demo_price' => '$XX.XX',
   'demo_start_date_time' => '18 Mar 16:08',
   'demo_ticket_type' => 'Bilet Normalny',
   'demo_venue' => 'Lokalizacja Demonstracyjna',

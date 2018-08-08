@@ -5,10 +5,11 @@ namespace App;
 use App\Attendize\Utils;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use DB;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
 class Account extends MyBaseModel
 {
-    use SoftDeletes;
+    use SoftDeletes, TenantAwareConnection;
 
     /**
      * The validation rules

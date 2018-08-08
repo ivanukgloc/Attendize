@@ -139,31 +139,6 @@
                                 </div>
                                 {!! Form::close() !!}
                             </div>
-                            <div class="tab-pane " id="about">
-                                <h4>
-                                    @lang("ManageAccount.version_info")
-                                </h4>
-                                <p>
-                                    @if($version_info['is_outdated'])
-                                        @lang("ManageAccount.version_out_of_date", ["installed" => $version_info['installed'], "latest"=> $version_info['latest'], "url"=>"https://attendize.com/documentation.php#download"]).
-                                    @else
-                                        @lang("ManageAccount.version_up_to_date", ["installed" => $version_info['installed']])
-                                    @endif
-                                </p>
-
-                                <h4>
-                                    @lang("ManageAccount.licence_info")
-                                </h4>
-                                <p>
-                                    @lang("ManageAccount.licence_info_description")
-                                </p>
-                                <h4>
-                                    @lang("ManageAccount.open_source_soft")Open-source Software
-                                </h4>
-                                <p>
-                                    @lang("ManageAccount.open_source_soft_description")
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>

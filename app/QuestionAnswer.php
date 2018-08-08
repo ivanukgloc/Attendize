@@ -1,9 +1,11 @@
 <?php
 
 namespace App;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
 class QuestionAnswer extends MyBaseModel
 {
+    use TenantAwareConnection;
 
     protected $fillable = [
         'question_id',

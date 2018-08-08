@@ -4,6 +4,7 @@ namespace App\Traits\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tenant;
+use App\Timezone;
 use Illuminate\Support\Facades\Hash;
 use Hyn\Tenancy\Contracts\Repositories\CustomerRepository;
 use Hyn\Tenancy\Contracts\Repositories\HostnameRepository;

@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use Hyn\Tenancy\Traits\TenantAwareConnection;
 
 /*
   Attendize.com   - Event Management & Ticketing
@@ -8,6 +9,7 @@ namespace App;
 
 class Affiliate extends \Illuminate\Database\Eloquent\Model
 {
+    use TenantAwareConnection;
     /**
      * The attributes that are mass assignable.
      *
